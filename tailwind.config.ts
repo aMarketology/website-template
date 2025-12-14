@@ -9,34 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Sophisticated Green Shades (Primary)
-        primary: '#2d5f3f',          // Deep forest green
-        'primary-light': '#3d8b5c',   // Medium sage green
-        'primary-dark': '#1a3d28',    // Dark hunter green
-        emerald: '#50c878',           // Vibrant emerald accent
-        sage: '#87a96b',              // Soft sage green
+        // Wedding Color Palette
+        // Blush & Rose Tones
+        blush: '#faf0f0',             // Soft blush background
+        'blush-light': '#fef9f9',     // Lightest blush
+        rose: '#e6b5b8',              // Dusty rose
+        'rose-light': '#f5e6e7',      // Light rose
+        'rose-accent': '#d4888c',     // Deeper rose accent
+        'rose-dark': '#b36a6f',       // Dark rose
         
-        // Pink Accents (Premium touch)
-        rose: '#d4a5a5',              // Dusty rose
-        'rose-light': '#f5e6e6',      // Light blush
-        'rose-accent': '#c97b84',     // Muted coral-pink
+        // Sage & Green Accents
+        sage: '#a7b5a6',              // Soft sage green
+        'sage-light': '#dfe5de',      // Light sage
+        'sage-dark': '#7a8e79',       // Deep sage
+        eucalyptus: '#94a896',        // Eucalyptus green
         
-        // Grey Tones (Sophistication)
-        'grey-50': '#f9fafb',
-        'grey-100': '#f3f4f6',
-        'grey-200': '#e5e7eb',
-        'grey-300': '#d1d5db',
-        'grey-400': '#9ca3af',
-        'grey-500': '#6b7280',
-        'grey-600': '#4b5563',
-        'grey-700': '#374151',
-        'grey-800': '#1f2937',
-        'grey-900': '#111827',
+        // Elegant Neutrals
+        ivory: '#fffef7',             // Warm ivory
+        cream: '#faf7f2',             // Cream
+        champagne: '#f7e7ce',         // Champagne gold
+        taupe: '#c9b8a8',             // Warm taupe
         
-        // Utility
-        dark: '#1a1a1a',
-        darkAlt: '#2d2d2d',
-        light: '#f8f9fa',
+        // Grey Tones (Sophisticated)
+        'grey-50': '#fafafa',
+        'grey-100': '#f5f5f5',
+        'grey-200': '#e8e8e8',
+        'grey-300': '#d4d4d4',
+        'grey-400': '#a3a3a3',
+        'grey-500': '#737373',
+        'grey-600': '#525252',
+        'grey-700': '#404040',
+        'grey-800': '#262626',
+        'grey-900': '#171717',
+        
+        // Gold Accents
+        gold: '#d4af37',              // Classic gold
+        'gold-light': '#ead9a9',      // Light gold
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        script: ['Great Vibes', 'cursive'],
       },
     },
   },

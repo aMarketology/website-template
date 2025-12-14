@@ -16,67 +16,67 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Our Story', href: '/our-story' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'RSVP', href: '/rsvp' },
+    { label: 'Registry', href: '/registry' },
+  ]
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-grey-900/95 backdrop-blur-lg shadow-lg border-b border-grey-700'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-rose-accent/10'
+          : 'bg-gradient-to-b from-white/80 to-transparent backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-5">
         <div className="flex justify-between items-center">
+          {/* Logo/Names */}
           <Link href="/" className="flex-shrink-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center"
+              className="flex items-center gap-2"
             >
-              <span className={`text-2xl font-bold transition-colors ${
+              <span className={`text-2xl md:text-3xl font-script transition-colors ${
                 scrolled
-                  ? 'text-grey-50'
-                  : 'text-grey-50'
+                  ? 'text-grey-800'
+                  : 'text-grey-800'
               }`}>
-                Austin Crate
+                M & S
               </span>
+              <svg className="w-5 h-5 text-rose-accent" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              </svg>
             </motion.div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-8 items-center">
-            {['Home', 'Services', 'Gallery', 'About', 'Contact'].map((item, index) => (
+          <div className="hidden md:flex gap-10 items-center">
+            {navItems.map((item, index) => (
               <motion.div
-                key={item}
+                key={item.label}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
                 <Link
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                  href={item.href}
                   className={`font-medium transition-colors relative group ${
                     scrolled
-                      ? 'text-grey-200 hover:text-emerald'
-                      : 'text-grey-200 hover:text-emerald'
+                      ? 'text-grey-700 hover:text-rose-accent'
+                      : 'text-grey-700 hover:text-rose-accent'
                   }`}
                 >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald transition-all group-hover:w-full" />
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-rose-accent transition-all group-hover:w-full" />
                 </Link>
               </motion.div>
             ))}
-            <motion.a
-              href="tel:(512) 240-9818"
-              className={`font-semibold px-6 py-2 rounded-lg transition-all ${
-                scrolled
-                  ? 'text-grey-50 hover:text-emerald'
-                  : 'text-grey-50 hover:text-emerald'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              (512) 240-9818
-            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,20 +86,20 @@ export default function Navigation() {
             whileTap={{ scale: 0.9 }}
           >
             <motion.div
-              className="w-6 h-0.5 bg-grey-50 transition-all"
+              className={`w-6 h-0.5 transition-colors ${scrolled ? 'bg-grey-800' : 'bg-grey-800'}`}
               animate={{
                 rotate: mobileMenuOpen ? 45 : 0,
                 y: mobileMenuOpen ? 8 : 0,
               }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-grey-50 transition-all"
+              className={`w-6 h-0.5 transition-colors ${scrolled ? 'bg-grey-800' : 'bg-grey-800'}`}
               animate={{
                 opacity: mobileMenuOpen ? 0 : 1,
               }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-grey-50 transition-all"
+              className={`w-6 h-0.5 transition-colors ${scrolled ? 'bg-grey-800' : 'bg-grey-800'}`}
               animate={{
                 rotate: mobileMenuOpen ? -45 : 0,
                 y: mobileMenuOpen ? -8 : 0,
@@ -117,31 +117,23 @@ export default function Navigation() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-1 bg-grey-800/95 backdrop-blur-lg rounded-lg mt-4 shadow-xl border border-grey-700">
-                {['Home', 'Services', 'Gallery', 'About', 'Contact'].map((item, index) => (
+              <div className="py-6 space-y-2 bg-white/95 backdrop-blur-xl rounded-2xl mt-6 shadow-2xl border border-rose-accent/20">
+                {navItems.map((item, index) => (
                   <motion.div
-                    key={item}
+                    key={item.label}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
                     <Link
-                      href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                      className="block px-4 py-3 text-grey-200 hover:bg-primary/10 hover:text-emerald transition font-medium rounded"
+                      href={item.href}
+                      className="block px-6 py-3 text-grey-700 hover:bg-rose-light/30 hover:text-rose-accent transition font-medium rounded-lg"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   </motion.div>
                 ))}
-                <div className="px-4 pt-2">
-                  <a
-                    href="tel:(512) 240-9818"
-                    className="block w-full bg-gradient-to-r from-primary to-primary-light hover:shadow-lg text-white text-center font-semibold px-6 py-3 rounded-lg transition"
-                  >
-                    (512) 240-9818
-                  </a>
-                </div>
               </div>
             </motion.div>
           )}
